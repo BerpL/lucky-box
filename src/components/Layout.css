@@ -326,6 +326,7 @@
   .floating-logo {
     top: 1rem;
     left: 1rem;
+    z-index: 1002;
   }
 
   .floating-logo .logo {
@@ -333,37 +334,49 @@
   }
 
   .floating-menu {
-    left: 1rem;
+    left: 50%;
     top: auto;
-    bottom: 1rem;
-    transform: none;
-    padding: 1rem 0.75rem;
+    bottom: 1.5rem;
+    transform: translateX(-50%);
+    padding: 1rem 1.5rem;
     width: auto;
+    min-width: auto;
+    max-width: calc(100vw - 3rem);
     flex-direction: row;
-    gap: 0.5rem;
+    gap: 0.75rem;
     animation: none;
+    border-radius: 30px;
+    box-shadow: 
+      0 8px 32px rgba(0, 0, 0, 0.9),
+      0 0 0 1px rgba(0, 245, 255, 0.2),
+      0 0 40px rgba(0, 245, 255, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
   }
 
   .nav-links {
     flex-direction: row;
     gap: 0.5rem;
+    width: 100%;
+    justify-content: space-around;
   }
 
   .nav-item {
-    width: 45px;
-    height: 45px;
+    width: 50px;
+    height: 50px;
     padding: 0.75rem;
+    flex: 0 0 auto;
   }
 
   .nav-icon {
-    width: 20px;
-    height: 20px;
+    width: 22px;
+    height: 22px;
   }
 
   .nav-tooltip {
     left: 50%;
     top: calc(100% + 0.75rem);
     transform: translateX(-50%);
+    white-space: nowrap;
   }
 
   .nav-tooltip::before {
@@ -381,31 +394,50 @@
   }
 
   .main {
-    padding-left: 20px;
-    padding-bottom: 100px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 120px;
+    padding-top: 5rem;
+  }
+
+  .container {
+    padding: 0 1rem;
   }
 }
 
 @media (max-width: 480px) {
+  .floating-logo {
+    top: 0.75rem;
+    left: 0.75rem;
+  }
+
   .floating-logo .logo {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     letter-spacing: 1px;
   }
 
   .floating-menu {
-    padding: 0.75rem 0.5rem;
+    left: 50%;
+    bottom: 1rem;
+    padding: 0.875rem 1rem;
+    gap: 0.5rem;
+    max-width: calc(100vw - 2rem);
+    border-radius: 25px;
+  }
+
+  .nav-links {
     gap: 0.4rem;
   }
 
   .nav-item {
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
     padding: 0.625rem;
   }
 
   .nav-icon {
-    width: 18px;
-    height: 18px;
+    width: 20px;
+    height: 20px;
   }
 
   .nav-tooltip {
@@ -414,8 +446,32 @@
   }
 
   .main {
-    padding-left: 15px;
-    padding-bottom: 90px;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    padding-bottom: 110px;
+    padding-top: 4.5rem;
+  }
+
+  .container {
+    padding: 0 0.5rem;
+  }
+
+  .footer {
+    padding: 1.5rem 0;
+  }
+
+  .footer p {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 1.25rem 0;
+  }
+
+  .footer p {
+    font-size: 0.85rem;
   }
 }
 

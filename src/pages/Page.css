@@ -122,12 +122,67 @@
 }
 
 @media (max-width: 768px) {
+  .page {
+    max-width: 100%;
+    padding: 0 1rem;
+  }
+
   .page h1 {
-    font-size: 2rem;
+    font-size: 1.75rem;
+    line-height: 1.3;
   }
 
   .section {
+    padding: 1.25rem;
+  }
+
+  .section h2 {
+    font-size: 1.5rem;
+  }
+
+  .contact-form {
     padding: 1.5rem;
+    max-width: 100%;
+  }
+
+  .form-group {
+    margin-bottom: 1.25rem;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    padding: 0.875rem;
+    font-size: 0.95rem;
+  }
+
+  .submit-btn {
+    padding: 0.875rem 1.5rem;
+    font-size: 0.95rem;
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .page h1 {
+    font-size: 1.5rem;
+  }
+
+  .section {
+    padding: 1rem;
+  }
+
+  .section h2 {
+    font-size: 1.25rem;
+  }
+
+  .contact-form {
+    padding: 1.25rem;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    padding: 0.75rem;
+    font-size: 0.9rem;
   }
 }
 

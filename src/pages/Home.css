@@ -124,23 +124,52 @@
   .home-hero {
     min-height: auto;
     padding: 1rem 0;
+    gap: 1.5rem;
   }
 
   .home-page h1 {
-    font-size: 2rem;
+    font-size: 1.75rem;
+    line-height: 1.2;
   }
 
   .hero-subtitle {
-    font-size: 1rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
   }
 
   .hero-3d {
-    height: 300px;
+    height: 280px;
   }
 
   .cta-button {
-    padding: 0.875rem 2rem;
-    font-size: 1rem;
+    padding: 0.875rem 1.75rem;
+    font-size: 0.95rem;
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-hero {
+    padding: 0.5rem 0;
+    gap: 1rem;
+  }
+
+  .home-page h1 {
+    font-size: 1.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 0.875rem;
+  }
+
+  .hero-3d {
+    height: 250px;
+  }
+
+  .cta-button {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.875rem;
   }
 }
 
