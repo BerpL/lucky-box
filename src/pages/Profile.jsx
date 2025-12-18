@@ -1,4 +1,9 @@
 import { useState, useEffect } from 'react'
+import { useNavigate, useSearchParams } from 'react-router-dom'
+import { getCredits, syncCreditsFromPurchases } from '../utils/credits'
+import { getPurchases } from '../utils/purchases'
+import { getUserId } from '../utils/auth'
+import { formatPrice } from '../data/products'
 import './Page.css'
 import './Profile.css'
 
@@ -8,8 +13,11 @@ const EXAMPLE_USER = {
 }
 
 function Profile() {
+  const navigate = useNavigate()
+  const [searchParams] = useSearchParams()
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [error, setError] = useState('')
+  const [credits, setCredits] = useState(0)
   const [formData, setFormData] = useState({
     email: '',
     password: ''
@@ -19,8 +27,25 @@ function Profile() {
     const session = localStorage.getItem('luckybox_session')
     if (session === 'true') {
       setIsLoggedIn(true)
+      // Sincronizar créditos desde las compras existentes
+      const userId = getUserId()
+      if (userId) {
+        const purchases = getPurchases(userId)
+        syncCreditsFromPurchases(purchases)
+      }
+      setCredits(getCredits())
     }
   }, [])
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      // Actualizar créditos periódicamente
+      const interval = setInterval(() => {
+        setCredits(getCredits())
+      }, 1000)
+      return () => clearInterval(interval)
+    }
+  }, [isLoggedIn])
 
   const handleInputChange = (e) => {
     const { name, value } = e.target
@@ -40,6 +65,14 @@ function Profile() {
       localStorage.setItem('luckybox_session', 'true')
       localStorage.setItem('luckybox_user', JSON.stringify({ email: EXAMPLE_USER.email }))
       setFormData({ email: '', password: '' })
+      
+      // Redirigir si hay un redirect en los parámetros
+      const redirect = searchParams.get('redirect')
+      if (redirect === 'checkout') {
+        navigate('/checkout')
+      } else if (redirect === 'history') {
+        navigate('/history')
+      }
     } else {
       setError('Credenciales incorrectas. Usa: ejemplo / ejemplo')
     }
@@ -135,9 +168,9 @@ function Profile() {
                 <span className="info-label">Miembro desde</span>
                 <span className="info-value">2025</span>
               </div>
-              <div className="info-item">
-                <span className="info-label">Cajas compradas</span>
-                <span className="info-value">0</span>
+              <div className="info-item credits-item">
+                <span className="info-label">Créditos LuckyBox</span>
+                <span className="info-value credits-value">{formatPrice(credits)}</span>
               </div>
             </div>
             <div className="profile-actions">

@@ -1,8 +1,15 @@
+import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+import { getCredits, syncCreditsFromPurchases } from '../utils/credits'
+import { getPurchases } from '../utils/purchases'
+import { getUserId, isLoggedIn } from '../utils/auth'
+import { formatPrice } from '../data/products'
 import './Layout.css'
 
 function Layout({ children }) {
   const location = useLocation()
+  const [credits, setCredits] = useState(0)
+  const [loggedIn, setLoggedIn] = useState(false)
   
   // Normalizar el pathname removiendo el base path de GitHub Pages
   const normalizePath = (pathname) => {
@@ -11,14 +18,51 @@ function Layout({ children }) {
   
   const currentPath = normalizePath(location.pathname)
 
+  // Verificar estado de sesión y actualizar créditos
+  useEffect(() => {
+    const checkAuth = () => {
+      const authStatus = isLoggedIn()
+      setLoggedIn(authStatus)
+      
+      if (authStatus) {
+        const userId = getUserId()
+        if (userId) {
+          const purchases = getPurchases(userId)
+          syncCreditsFromPurchases(purchases)
+        }
+        setCredits(getCredits())
+      } else {
+        setCredits(0)
+      }
+    }
+    
+    // Verificar inmediatamente
+    checkAuth()
+    
+    // Verificar periódicamente para detectar cambios de sesión
+    const interval = setInterval(checkAuth, 500)
+    
+    return () => clearInterval(interval)
+  }, [location.pathname])
+
   return (
     <div className="layout">
-      <Link to="/" className="floating-logo">
-        <div className="logo-container">
-          <div className="logo-glow"></div>
+      <header className="navbar">
+        <Link to="/" className="navbar-logo">
           <h1 className="logo">LuckyBox</h1>
-        </div>
-      </Link>
+        </Link>
+        
+        {loggedIn ? (
+          <div className="navbar-credits">
+            <span className="credits-label">Créditos:</span>
+            <span className="credits-amount">{formatPrice(credits)}</span>
+          </div>
+        ) : (
+          <Link to="/profile" className="navbar-login-button">
+            Iniciar Sesión
+          </Link>
+        )}
+      </header>
       <nav className="floating-menu">
         <div className="nav-links">
           <Link 
@@ -49,7 +93,7 @@ function Layout({ children }) {
           </Link>
           <Link 
             to="/cart" 
-            className={`nav-item ${currentPath === '/cart' ? 'active' : ''}`}
+            className={`nav-item ${currentPath === '/cart' || currentPath === '/checkout' ? 'active' : ''}`}
             title="Carrito"
           >
             <svg className="nav-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -58,6 +102,18 @@ function Layout({ children }) {
               <path d="M1 1H5L7.68 14.39C7.77144 14.8504 8.02191 15.264 8.38755 15.5583C8.75318 15.8526 9.2107 16.009 9.68 16H19.4C19.8693 16.009 20.3268 15.8526 20.6925 15.5583C21.0581 15.264 21.3086 14.8504 21.4 14.39L23 6H6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
             <span className="nav-tooltip">Carrito</span>
+            <span className="nav-glow"></span>
+          </Link>
+          <Link 
+            to="/history" 
+            className={`nav-item ${currentPath === '/history' || currentPath.startsWith('/purchases/') ? 'active' : ''}`}
+            title="Historial"
+          >
+            <svg className="nav-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 8V12L15 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+            <span className="nav-tooltip">Historial</span>
             <span className="nav-glow"></span>
           </Link>
           <Link 

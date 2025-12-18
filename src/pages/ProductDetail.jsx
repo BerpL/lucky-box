@@ -1,13 +1,16 @@
 import { useState } from 'react'
-import { useParams, Link } from 'react-router-dom'
+import { useParams, Link, useNavigate } from 'react-router-dom'
 import { getProductById, formatPrice, getRarityColor } from '../data/products'
+import { addToCart } from '../utils/cart'
 import './Page.css'
 import './ProductDetail.css'
 
 function ProductDetail() {
   const { id } = useParams()
+  const navigate = useNavigate()
   const product = getProductById(id)
   const [showProbabilities, setShowProbabilities] = useState(true)
+  const [addedToCart, setAddedToCart] = useState(false)
 
   if (!product) {
     return (
@@ -19,6 +22,14 @@ function ProductDetail() {
   }
 
   const sortedItems = [...product.items].sort((a, b) => b.probability - a.probability)
+
+  const handleAddToCart = () => {
+    addToCart(product)
+    setAddedToCart(true)
+    setTimeout(() => {
+      setAddedToCart(false)
+    }, 2000)
+  }
 
   return (
     <div className="page product-detail-page">
@@ -84,7 +95,13 @@ function ProductDetail() {
             </div>
             <h3 className="sidebar-product-name">{product.name}</h3>
             <div className="product-price-large">{formatPrice(product.price)}</div>
-            <button className="buy-button">Comprar Ahora</button>
+            <button 
+              className={`buy-button ${addedToCart ? 'added' : ''}`}
+              onClick={handleAddToCart}
+              disabled={addedToCart}
+            >
+              {addedToCart ? '✓ Agregado' : 'Agregar al Carrito'}
+            </button>
           </div>
         </div>
       </div>

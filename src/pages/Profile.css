@@ -192,6 +192,22 @@
   text-shadow: 0 0 10px rgba(0, 245, 255, 0.3);
 }
 
+.credits-item {
+  background: linear-gradient(135deg, rgba(0, 245, 255, 0.1), rgba(255, 0, 255, 0.1));
+  border-color: var(--primary-color);
+  box-shadow: 0 0 20px rgba(0, 245, 255, 0.2);
+}
+
+.credits-value {
+  font-size: 1.25rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: none;
+}
+
 .profile-actions {
   margin-top: 2rem;
   padding-top: 2rem;

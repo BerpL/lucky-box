@@ -110,6 +110,15 @@
   transform: translateY(0);
 }
 
+.buy-button.added,
+.buy-button:disabled {
+  background: linear-gradient(135deg, rgba(0, 200, 0, 0.3), rgba(0, 150, 0, 0.2));
+  border-color: #00ff00;
+  color: #00ff00;
+  cursor: not-allowed;
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.4);
+}
+
 .probability-toggle {
   margin-bottom: 1.5rem;
 }
