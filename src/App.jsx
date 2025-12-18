@@ -11,7 +11,7 @@ import Profile from './pages/Profile'
 
 function App() {
   return (
-    <Router>
+    <Router basename="/lucky-box">
       <Layout>
         <Routes>
           <Route path="/" element={<Home />} />

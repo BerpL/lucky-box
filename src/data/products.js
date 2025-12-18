@@ -1,7 +1,7 @@
-// Helper para construir rutas de imágenes
+// Helper para construir rutas de imágenes con el base path correcto
 const getImagePath = (imageName) => {
-  // Las imágenes están en public/ y Vite las copia a la raíz de dist/
-  return `/${imageName}`
+  const base = import.meta.env.BASE_URL
+  return `${base}${imageName}`
 }
 
 export const products = [

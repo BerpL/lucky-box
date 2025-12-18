@@ -11,7 +11,12 @@ function Layout({ children }) {
   const [credits, setCredits] = useState(0)
   const [loggedIn, setLoggedIn] = useState(false)
   
-  const currentPath = location.pathname
+  // Normalizar el pathname removiendo el base path de GitHub Pages
+  const normalizePath = (pathname) => {
+    return pathname.replace(/^\/lucky-box/, '') || '/'
+  }
+  
+  const currentPath = normalizePath(location.pathname)
 
   // Verificar estado de sesión y actualizar créditos
   useEffect(() => {
