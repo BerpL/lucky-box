@@ -1,7 +1,11 @@
 // Helper para construir rutas de imágenes con el base path correcto
 const getImagePath = (imageName) => {
-  const base = import.meta.env.BASE_URL
-  return `${base}${imageName}`
+  // En desarrollo, las imágenes están en public/
+  // En producción, Vite las copia a la raíz de dist/
+  const base = import.meta.env.BASE_URL || '/lucky-box/'
+  // Asegurar que la ruta no tenga doble barra
+  const cleanBase = base.endsWith('/') ? base : `${base}/`
+  return `${cleanBase}${imageName}`
 }
 
 export const products = [
