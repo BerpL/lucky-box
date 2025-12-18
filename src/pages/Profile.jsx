@@ -133,7 +133,7 @@ function Profile() {
               </div>
               <div className="info-item">
                 <span className="info-label">Miembro desde</span>
-                <span className="info-value">2024</span>
+                <span className="info-value">2025</span>
               </div>
               <div className="info-item">
                 <span className="info-label">Cajas compradas</span>

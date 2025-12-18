@@ -35,7 +35,7 @@ function Layout({ children }) {
           </Link>
           <Link 
             to="/catalog" 
-            className={`nav-item ${currentPath === '/catalog' ? 'active' : ''}`}
+            className={`nav-item ${currentPath === '/catalog' || currentPath.startsWith('/product/') ? 'active' : ''}`}
             title="Catálogo"
           >
             <svg className="nav-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -81,7 +81,7 @@ function Layout({ children }) {
       </main>
       <footer className="footer">
         <div className="container">
-          <p>&copy; 2024 LuckyBox. Todos los derechos reservados.</p>
+          <p>&copy; 2025 LuckyBox. Todos los derechos reservados.</p>
         </div>
       </footer>
     </div>
