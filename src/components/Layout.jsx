@@ -3,6 +3,13 @@ import './Layout.css'
 
 function Layout({ children }) {
   const location = useLocation()
+  
+  // Normalizar el pathname removiendo el base path de GitHub Pages
+  const normalizePath = (pathname) => {
+    return pathname.replace(/^\/lucky-box/, '') || '/'
+  }
+  
+  const currentPath = normalizePath(location.pathname)
 
   return (
     <div className="layout">
@@ -16,7 +23,7 @@ function Layout({ children }) {
         <div className="nav-links">
           <Link 
             to="/" 
-            className={`nav-item ${location.pathname === '/' ? 'active' : ''}`}
+            className={`nav-item ${currentPath === '/' ? 'active' : ''}`}
             title="Inicio"
           >
             <svg className="nav-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -28,7 +35,7 @@ function Layout({ children }) {
           </Link>
           <Link 
             to="/catalog" 
-            className={`nav-item ${location.pathname === '/catalog' ? 'active' : ''}`}
+            className={`nav-item ${currentPath === '/catalog' ? 'active' : ''}`}
             title="Catálogo"
           >
             <svg className="nav-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -42,7 +49,7 @@ function Layout({ children }) {
           </Link>
           <Link 
             to="/cart" 
-            className={`nav-item ${location.pathname === '/cart' ? 'active' : ''}`}
+            className={`nav-item ${currentPath === '/cart' ? 'active' : ''}`}
             title="Carrito"
           >
             <svg className="nav-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -55,7 +62,7 @@ function Layout({ children }) {
           </Link>
           <Link 
             to="/profile" 
-            className={`nav-item ${location.pathname === '/profile' ? 'active' : ''}`}
+            className={`nav-item ${currentPath === '/profile' ? 'active' : ''}`}
             title="Perfil"
           >
             <svg className="nav-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
