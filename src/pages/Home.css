@@ -1,0 +1,146 @@
+.home-page {
+  max-width: 100%;
+  padding: 0;
+}
+
+.home-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+  min-height: 70vh;
+  padding: 2rem 0;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  z-index: 1;
+}
+
+.home-page h1 {
+  font-size: 3.5rem;
+  margin-bottom: 0;
+  line-height: 1.2;
+  font-weight: 800;
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  max-width: 500px;
+}
+
+.hero-cta {
+  margin-top: 1rem;
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: white;
+  text-decoration: none;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 0 30px rgba(0, 245, 255, 0.5);
+  transition: all 0.3s;
+  border: 2px solid transparent;
+}
+
+.cta-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 40px rgba(0, 245, 255, 0.7), 0 0 60px rgba(255, 0, 255, 0.4);
+  filter: brightness(1.1);
+}
+
+.hero-3d {
+  position: relative;
+  width: 100%;
+  height: 600px;
+  overflow: visible;
+  background: transparent;
+}
+
+.spline-container {
+  width: 100%;
+  height: 100%;
+}
+
+.spline-container canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.placeholder-3d {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+}
+
+.placeholder-content {
+  text-align: center;
+  color: var(--text-secondary);
+}
+
+.placeholder-content svg {
+  width: 120px;
+  height: 120px;
+  color: var(--primary-color);
+  opacity: 0.5;
+  margin-bottom: 1rem;
+  filter: drop-shadow(0 0 20px rgba(0, 245, 255, 0.3));
+}
+
+.placeholder-content p {
+  font-size: 1rem;
+  color: var(--text-light);
+  margin: 0;
+}
+
+@media (max-width: 1024px) {
+  .home-hero {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .hero-3d {
+    height: 400px;
+    order: -1;
+  }
+
+  .home-page h1 {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .home-hero {
+    min-height: auto;
+    padding: 1rem 0;
+  }
+
+  .home-page h1 {
+    font-size: 2rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+
+  .hero-3d {
+    height: 300px;
+  }
+
+  .cta-button {
+    padding: 0.875rem 2rem;
+    font-size: 1rem;
+  }
+}
+
