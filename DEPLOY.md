@@ -1,30 +1,31 @@
-# Guía de Despliegue en GitHub Pages
+# LuckyBox - Cajas Misteriosas
 
-## Configuración Inicial
+Aplicación web SPA desarrollada con React y Vite para la venta de cajas misteriosas.
 
-1. Ve a tu repositorio en GitHub: https://github.com/BerpL/lucky-box
-2. Ve a **Settings** > **Pages**
-3. En **Source**, selecciona **Deploy from a branch**
-4. Selecciona la rama **gh-pages** y la carpeta **/ (root)**
-5. Guarda los cambios
+## Características
 
-## Despliegue Manual
+- Catálogo de productos con cajas misteriosas
+- Sistema de carrito de compras
+- Autenticación de usuarios
+- Sistema de créditos LuckyBox
+- Historial de compras
+- Apertura de cajas con probabilidades
+- Diseño responsive con tema dark neón
 
-Para desplegar tu aplicación:
+## Desarrollo
 
 ```bash
-npm run deploy
+npm install
+npm run dev
 ```
 
-Este comando:
-1. Construye el proyecto (`npm run build`)
-2. Sube el contenido de `dist/` a la rama `gh-pages`
-3. GitHub Pages automáticamente servirá el contenido
+## Build
 
-## Notas Importantes
+```bash
+npm run build
+```
+
+## Notas
 
 - El base path está configurado como `/lucky-box/` en `vite.config.js`
 - Si cambias el nombre del repositorio, actualiza el `base` en `vite.config.js`
-- El archivo `404.html` se copia automáticamente durante el build
-- El despliegue puede tardar unos minutos en completarse
-- Tu sitio estará disponible en: `https://berpl.github.io/lucky-box/`
