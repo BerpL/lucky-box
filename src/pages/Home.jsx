@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import Spline from '@splinetool/react-spline'
 import './Page.css'
 import './Home.css'
@@ -23,9 +24,9 @@ function Home() {
             Cada caja es una nueva aventura esperando ser descubierta.
           </p>
           <div className="hero-cta">
-            <a href="/catalog" className="cta-button">
+            <Link to="/catalog" className="cta-button">
               Explorar Catálogo
-            </a>
+            </Link>
           </div>
         </div>
         {SPLINE_SCENE_URL && !splineError && (
