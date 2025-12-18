@@ -325,12 +325,21 @@
 @media (max-width: 768px) {
   .floating-logo {
     top: 1rem;
-    left: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
     z-index: 1002;
+  }
+
+  .floating-logo .logo-container {
+    text-align: center;
   }
 
   .floating-logo .logo {
     font-size: 1.4rem;
+  }
+
+  .footer {
+    display: none;
   }
 
   .floating-menu {
@@ -442,7 +451,8 @@
 @media (max-width: 480px) {
   .floating-logo {
     top: 0.75rem;
-    left: 0.75rem;
+    left: 50%;
+    transform: translateX(-50%);
   }
 
   .floating-logo .logo {
