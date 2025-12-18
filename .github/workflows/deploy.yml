@@ -35,9 +35,14 @@ jobs:
       
       - name: Verify build output
         run: |
+          echo "=== Build verification ==="
           ls -la dist/
-          echo "--- index.html content ---"
-          head -20 dist/index.html
+          echo ""
+          echo "=== index.html content ==="
+          cat dist/index.html
+          echo ""
+          echo "=== Checking for main.jsx (should NOT exist) ==="
+          ls -la dist/src/ 2>&1 || echo "Good: dist/src does not exist"
       
       - name: Setup Pages
         uses: actions/configure-pages@v4
