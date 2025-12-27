@@ -66,3 +66,4 @@ export const getCartItemsCount = () => {
   return cart.reduce((count, item) => count + item.quantity, 0)
 }
 
+

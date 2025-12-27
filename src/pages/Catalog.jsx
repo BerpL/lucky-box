@@ -16,7 +16,12 @@ function Catalog() {
           >
             <img src={product.image} alt={product.name} className="product-image" />
             <h3 className="product-name">{product.name}</h3>
-            <span className="product-price">{formatPrice(product.price)}</span>
+            <div className="product-pricing">
+              {product.originalPrice && (
+                <span className="product-original-price">{formatPrice(product.originalPrice)}</span>
+              )}
+              <span className="product-price">{formatPrice(product.price)}</span>
+            </div>
           </Link>
         ))}
       </div>

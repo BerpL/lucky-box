@@ -60,6 +60,11 @@ function ProductDetail() {
                 className="item-row"
                 style={{ '--rarity-color': rarityColor }}
               >
+                {item.image && (
+                  <div className="item-image">
+                    <img src={item.image} alt={item.name} />
+                  </div>
+                )}
                 {showProbabilities && (
                 <div className="item-probability">
                   {item.probability.toFixed(4)}%
@@ -94,7 +99,12 @@ function ProductDetail() {
               <img src={product.image} alt={product.name} />
             </div>
             <h3 className="sidebar-product-name">{product.name}</h3>
-            <div className="product-price-large">{formatPrice(product.price)}</div>
+            <div className="product-pricing-large">
+              {product.originalPrice && (
+                <span className="product-original-price-large">{formatPrice(product.originalPrice)}</span>
+              )}
+              <div className="product-price-large">{formatPrice(product.price)}</div>
+            </div>
             <button 
               className={`buy-button ${addedToCart ? 'added' : ''}`}
               onClick={handleAddToCart}

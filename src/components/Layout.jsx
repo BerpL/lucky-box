@@ -4,6 +4,7 @@ import { getCredits, syncCreditsFromPurchases } from '../utils/credits'
 import { getPurchases } from '../utils/purchases'
 import { getUserId, isLoggedIn } from '../utils/auth'
 import { formatPrice } from '../data/products'
+import Countdown from './Countdown'
 import './Layout.css'
 
 function Layout({ children }) {
@@ -63,6 +64,7 @@ function Layout({ children }) {
           </Link>
         )}
       </header>
+      <Countdown />
       <nav className="floating-menu">
         <div className="nav-links">
           <Link 

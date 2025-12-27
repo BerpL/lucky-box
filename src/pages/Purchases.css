@@ -138,6 +138,24 @@
   border-top: 1px solid var(--border-color);
 }
 
+.opened-item-image {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(10, 10, 15, 0.6);
+  border-radius: 10px;
+  padding: 0.5rem;
+  border: 1px solid rgba(0, 245, 255, 0.2);
+}
+
+.opened-item-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
 .item-rarity-badge {
   padding: 0.5rem 1rem;
   border-radius: 8px;
@@ -317,6 +335,25 @@
   gap: 1rem;
 }
 
+.result-item-image {
+  width: 150px;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(10, 10, 15, 0.8);
+  border-radius: 15px;
+  padding: 1rem;
+  border: 2px solid rgba(0, 245, 255, 0.3);
+  box-shadow: 0 0 30px rgba(0, 245, 255, 0.2);
+}
+
+.result-item-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
 .result-rarity-badge {
   padding: 0.75rem 1.5rem;
   border-radius: 12px;
@@ -386,4 +423,5 @@
     font-size: 1.5rem;
   }
 }
+
 

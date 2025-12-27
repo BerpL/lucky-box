@@ -342,6 +342,7 @@
   background: transparent;
   min-height: calc(100vh - 200px);
   margin-top: 70px; /* Espacio para el navbar */
+  padding-top: 8rem; /* Espacio para navbar + countdown */
 }
 
 .footer {
@@ -551,7 +552,7 @@
     padding-left: 1rem;
     padding-right: 1rem;
     padding-bottom: 100px;
-    padding-top: 1rem;
+    padding-top: 5rem; /* Espacio para navbar + countdown en móvil */
     margin-top: 60px; /* Espacio para el navbar en móvil */
   }
 
@@ -616,7 +617,7 @@
     padding-left: 0.75rem;
     padding-right: 0.75rem;
     padding-bottom: 95px;
-    padding-top: 4.5rem;
+    padding-top: 5rem; /* Espacio para navbar + countdown en móvil pequeño */
   }
 
   .container {

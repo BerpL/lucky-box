@@ -153,6 +153,11 @@ function Purchases() {
             <button className="close-result" onClick={() => setShowResult(false)}>×</button>
             <h2>¡Felicidades!</h2>
             <div className="result-item">
+              {openedItem.image && (
+                <div className="result-item-image">
+                  <img src={openedItem.image} alt={openedItem.name} />
+                </div>
+              )}
               <div 
                 className="result-rarity-badge"
                 style={{ 
@@ -206,6 +211,11 @@ function Purchases() {
                   </div>
                   <h3 className="box-name">{box.boxName}</h3>
                   <div className="opened-item-info">
+                    {box.openedItem.image && (
+                      <div className="opened-item-image">
+                        <img src={box.openedItem.image} alt={box.openedItem.name} />
+                      </div>
+                    )}
                     <div 
                       className="item-rarity-badge"
                       style={{ 
