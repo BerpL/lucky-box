@@ -9,7 +9,6 @@ function ProductDetail() {
   const { id } = useParams()
   const navigate = useNavigate()
   const product = getProductById(id)
-  const [showProbabilities, setShowProbabilities] = useState(true)
   const [addedToCart, setAddedToCart] = useState(false)
 
   if (!product) {
@@ -56,17 +55,6 @@ function ProductDetail() {
         <div className="product-content">
           <section className="section">
             <h2>¿Qué puedes encontrar dentro de esta Caja?</h2>
-            <div className="probability-toggle">
-              <label className="toggle-switch">
-                <input 
-                  type="checkbox"
-                  checked={showProbabilities}
-                  onChange={() => setShowProbabilities(!showProbabilities)}
-                />
-                <span className="toggle-slider"></span>
-                <span className="toggle-label">Mostrar probabilidades</span>
-              </label>
-            </div>
             
             <div className="items-list">
             {sortedItems.map((item, index) => {
@@ -81,11 +69,6 @@ function ProductDetail() {
                   <div className="item-image">
                     <img src={item.image} alt={item.name} />
                   </div>
-                )}
-                {showProbabilities && (
-                <div className="item-probability">
-                  {item.probability.toFixed(4)}%
-                </div>
                 )}
                 <div className="item-info">
                   <div className="item-name-row">
