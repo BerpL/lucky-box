@@ -21,7 +21,24 @@ function ProductDetail() {
     )
   }
 
-  const sortedItems = [...product.items].sort((a, b) => b.probability - a.probability)
+  // Función para obtener el orden de rareza (menor número = más raro)
+  const getRarityOrder = (rarity) => {
+    const rarityOrder = {
+      'legendario': 1,
+      'épico': 2,
+      'raro': 3,
+      'poco común': 4,
+      'común': 5
+    }
+    return rarityOrder[rarity] || 99
+  }
+
+  // Ordenar por rareza (más raros primero), y si tienen la misma rareza, por probabilidad (menor primero)
+  const sortedItems = [...product.items].sort((a, b) => {
+    const rarityDiff = getRarityOrder(a.rarity) - getRarityOrder(b.rarity)
+    if (rarityDiff !== 0) return rarityDiff
+    return a.probability - b.probability
+  })
 
   const handleAddToCart = () => {
     addToCart(product)
