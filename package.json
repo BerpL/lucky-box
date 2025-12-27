@@ -6,8 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "build:gh-pages": "VITE_BASE_PATH=/lucky-box/ vite build",
     "preview": "vite preview",
-    "deploy": "npm run build && gh-pages -d dist"
+    "deploy": "npm run build:gh-pages && gh-pages -d dist"
   },
   "dependencies": {
     "@splinetool/react-spline": "^4.1.0",
